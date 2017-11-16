@@ -49,7 +49,7 @@ Full configuration details for hyperparameters are listed as above.
 This code snippet depicts the 1x1 convolution, number of kernels is same as the number of input, only the stride and kernel size all set to be 1.
 Another merit for 1x1 convolution is the reduction of the tuning parameters relatively, compared to the fully connected output layer, preventing the model from overfitting. And it makes the structure deeper with some more parameters, which is implemented in matrix multiplication instead of costly convolution. 
 
-### 4. Encodeing and decoding methods
+### 4. Encoding and decoding methods
 The encoder is responsible for the feature extraction, the deeper each layer is, the more parameters for training is produced, for this project the layer is set to 3, and the depths in each layer increases with the forward direction, the depth is from 16 at first layer to 64 at last layer. The stride for the convolution is set to 2 for each layer, which produces the half of the dimensions both in height and the width of image after filter. After each layer in encoder the separable layer Implementation for both are provided to convolute the each image into different depth channel separately, instead of with 3 Dimensions' kernel for convolution, this will reduce the parameters for training, after that, the batch normalization with the ReLU activation function is applied to each layer to normalize the output and make the output positive.
 '''
     encoder_layer1 = encoder_block(inputs, 16, 2)   
