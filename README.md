@@ -72,16 +72,16 @@ I have trained my fcn model with two pairs' datasets, one is from online reposit
 1 Patrolled over the whole area with different height to cover as more distractions as possible.
 2 Made the hero zigzagging while the drone hovering over on her side to get more feature from different angles.
 3 Spawned the hero in a bunch of people, to provide more data for detection training. This also contributes to the segmentation of the other characters.
-![Metric IOU for defaut training dataset](metric_training_with_default_data.jpg)
+![Metric IOU for defaut training dataset](metric_training_with_default_data.JPG)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Metric IOU for defaut training dataset<br />
 The snapshot above shows the average IoU value for the hero detection, approximately 42% is obtained with the tuned hyperparameters.
-![Metric IOU for defaut my own dataset](metric_training_with_my_own_data.jpg)
+![Metric IOU for defaut my own dataset](metric_training_with_my_own_data.JPG)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Metric IOU for defaut my own dataset<br />
 The snapshot above displays that IoU from this new training process is almost same as the one from model with default dataset.
-![Plot of cost with default dataset](plot_traning_with_my_default_data.jpg)
+![Plot of cost with default dataset](plot_traning_with_my_default_data.JPG)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Plot of cost with default dataset<br />
 This is the plot corresponding to the training with default dataset.
-![Plot of cost with my own dataset](plot_traning_with_my_default_data.jpg)
+![Plot of cost with my own dataset](plot_traning_with_my_default_data.JPG)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Plot of cost with my own dataset<br />
 This last one is the plot corresponding to the new dataset. The cross function for training decreases rapidly after the first epoch and then slowly with more epochs, but it proves the outcome is still improving, while the cost for the validation is almost unchanged from 1st epoch, the order of magnitude stay around one decimal. Even the overfitting occurs after 9th epoch.
 ## Future Enhancements	
