@@ -64,9 +64,11 @@ Decoder number is same as the number at encoder, but the size decreases from lay
     decoder_layer3 = decoder_block(decoder_layer2, inputs, 16)
 '''
 These three lines from the fcn_model account for the deconvolution,  with the combinaton of layer being used,  the small size layer and large size layer both assigned correspondingly to the arguments of call function. But too many skipping connection may also lead to the explosion of output.
-### 5. Probability to expand the model onto other tasks
+### 5. Possibility to expand the model onto other objects
 This model should be to some extent not feasible for the following the cat or dog. Because the depth is not enough to extract some small features from the small animal, but with some modification within the layer it may be possible, like the kernel size or the stride should be modified to a lower ones, in order to make the zoom in effect for convolution more precise,  in order to collect more information from the small valid area in the image. Accordingly the hyperparameters should be tweaked again to attain a good performance.
 
+The obtained model thorough the training for hero, therefore the weights in this model should be not applicable for recognition of some pets, 
+because I read throuhg a tutorial forum [link](http://forums.fast.ai/t/my-note-on-lesson-1-image-recognition-cats-dogs-a-cognitive-use-case-by-implementing-a-supervised-learning-for-image-classification/6284), they used a more complicated supervised deep learning method to train a classifier for recognition of cat and dog, the more layers are involved to extract more small patterns from these kind of targets, at the encoder side, VGG-16 is deployed by a lot of networks, which works quite well to complete the recognition of cat and dog. So I thought the modification should bring our model in combination with pre-trained model, attained from the online image database using VGG-16 to extract model features,  then connecting the pre-trained model to our 1x1 convolution and decoder, which may produce a goog performance, otherwise we may need to get a lot of pets dataset for the retraining.
 ## Result analysis and summary 
 I have trained my fcn model with two pairs' datasets, one is from online repository, the other produced by myself in simulator, with the advice from the tutorial, I collected the data mainly in three scenarios:
 1 Patrolled over the whole area with different height to cover as more distractions as possible.
