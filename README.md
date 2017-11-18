@@ -79,7 +79,7 @@ I have trained my fcn model with two pairs' datasets, one is from online reposit
 1 Patrolled over the whole area with different height to cover as more distractions as possible.
 2 Made the hero zigzagging while the drone hovering over on her side to get more feature from different angles.
 3 Spawned the hero in a bunch of people, to provide more data for detection training. This also contributes to the segmentation of the other characters.
-![Metric IOU for merged training dataset](average_IoU_metric.png)
+![Metric IOU for merged training dataset](averageIoU_metric.png)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Metric IOU for merged training dataset<br />
 The snapshot above shows the average IoU value for the hero detection, approximately 42% is obtained with the tuned hyperparameters.
 
