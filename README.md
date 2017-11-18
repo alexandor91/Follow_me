@@ -73,7 +73,7 @@ because I read throuhg a tutorial forum [link](http://forums.fast.ai/t/my-note-o
 1 <b>Merged the default training data with data collected in detection and patrol without target scenario, in this way the wrong predictions could be counteracted</b> <br /> 
 2 <b>Ran the dasta on AWS, with GPU, the training process is virtually speeded up, only to take several minutes instead of several hours before</b> <br /> 
 3 <b>Increased the depth ineach layer, at encoder side, 32-> 64 -> 128 rather than 16 -> 32 -> 64, 1x1 convolution with filters 256, decoder 128 -> 64 -> 32 </b> <br /> 
-4 <b>Reduced Num_epochs to  18 before overfitting, simutaneously with the valiation loss less than 0.02 </b> <br /> 
+4 <b>Reduced Num_epochs to  18 before overfitting, simutaneously with the valiation loss, at 0.0287 and training loss at 0.0105</b> <br /> 
 ## Result analysis and summary 
 I have trained my fcn model with two pairs' datasets, one is from online repository, the other produced by myself in simulator, with the advice from the tutorial, I collected the data mainly in three scenarios:
 1 Patrolled over the whole area with different height to cover as more distractions as possible.
