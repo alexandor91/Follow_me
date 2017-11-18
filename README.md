@@ -28,10 +28,10 @@ The sketch above depicts the model utilized for this project, the layer with ind
 ### 2. Hyperparameters
 '''
 learning_rate = 0.001
-batch_size = 40
-num_epochs = 18
-steps_per_epoch = 40
-validation_steps = 40
+batch_size = 50
+num_epochs =18
+steps_per_epoch = 50
+validation_steps = 50
 workers = 16
 '''
 Full configuration details for hyperparameters are listed as above. 
@@ -72,12 +72,8 @@ because I read throuhg a tutorial forum [link](http://forums.fast.ai/t/my-note-o
 ### 6. Modification to improve the IoU to the required level
 1 <b>Merged the default training data with data collected in detection and patrol without target scenario, in this way the wrong predictions could be counteracted</b> <br /> 
 2 <b>Ran the dasta on AWS, with GPU, the training process is virtually speeded up, only to take several minutes instead of several hours before</b> <br /> 
-2 <b>Increased the depth ineach layer, at encoder side, 32-> 64 -> 128 rather than 16 -> 32 -> 64, 1x1 convolution with filters 256, decoder 128 -> 64 -> 32 </b> <br /> 
-3 <b>Reduced Num_epochs to  18 before overfitting, simutaneously with the valiation loss less than 0.02 </b> <br /> 
-
-4 <b>validation_steps</b>: number of batches of validation images that go through the network in each epoch. similar to steps_per_epoch, a default value is kept. <br />
-5 <b>workers</b>: maximum number of processes to spin up. With my hardware specs, I found this number will not run out of my computational resources on my pc, and it speeds up my training process simultaneously. <br />
-
+3 <b>Increased the depth ineach layer, at encoder side, 32-> 64 -> 128 rather than 16 -> 32 -> 64, 1x1 convolution with filters 256, decoder 128 -> 64 -> 32 </b> <br /> 
+4 <b>Reduced Num_epochs to  18 before overfitting, simutaneously with the valiation loss less than 0.02 </b> <br /> 
 ## Result analysis and summary 
 I have trained my fcn model with two pairs' datasets, one is from online repository, the other produced by myself in simulator, with the advice from the tutorial, I collected the data mainly in three scenarios:
 1 Patrolled over the whole area with different height to cover as more distractions as possible.
@@ -87,9 +83,9 @@ I have trained my fcn model with two pairs' datasets, one is from online reposit
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Metric IOU for merged training dataset<br />
 The snapshot above shows the average IoU value for the hero detection, approximately 42% is obtained with the tuned hyperparameters.
 
-![Plot of cost](plot_data.JPG)
+![Plot of cost](plot_cost.png)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Plot of cost <br />
-This is the plot corresponding to the training with default dataset.
+This is the plot corresponding to the training with merged dataset with about 5000 images.
 
 This last one is the plot corresponding to the new dataset. The cross function for training decreases rapidly after the first epoch and then slowly with more epochs, but it proves the outcome is still improving, while the cost for the validation is almost unchanged from 1st epoch, the order of magnitude stay around one decimal. Even the overfitting occurs after 9th epoch.
 ## Future Enhancements	
