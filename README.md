@@ -84,7 +84,7 @@ I have trained my fcn model with two pairs' datasets, one is from online reposit
 The snapshot above shows the average IoU value for the hero detection, approximately 42% is obtained with the tuned hyperparameters.
 
 ![Plot of cost](plot_cost.png)
-<br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Plot of cost <br />
+<br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Plot of cost vs epoch<br />
 This is the plot corresponding to the training with merged dataset with about 5000 images.
 
 This last one is the plot corresponding to the new dataset. The cross function for training decreases rapidly after the first epoch and then slowly with more epochs, but it proves the outcome is still improving, while the cost for the validation is almost unchanged from 1st epoch, the order of magnitude stay around one decimal. Even the overfitting occurs after 9th epoch.
