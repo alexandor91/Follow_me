@@ -24,7 +24,7 @@ This repository is established for the Udacity project 4 in nanodegree program
 The overall architecture for the network is composed of encoder and 1x1 convolution and the decoder, the encoder accounts for the feature recognition, so with the depth increases, the feature is extracted into a hierarchical  structure. The 1x1 convolution is applied when the spatial  information or location should be retained in the network. The skip connection technique is applied to refine the environment with the combination of different image resolutions.
 ![Network structure](network_structure.jpg)
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Network structure<br />
-The sketch above depicts the model utilized for this project, the layer with index from 1 to 3 belongs to encoder, 4 is the 1x1 convolution layer, from 5 to 7, these layers build up the decoder. The arrow depicts the direction of information transmission from input, all the way up to output. The three skip connection lines from input, first and second output are connected to layer with the output from the adjacent layer at decoder side.
+The sketch above depicts the model utilized for this project, the layer with index from 1 to 3 belongs to encoder, 4 is the 1x1 convolution layer, from 5 to 7, these layers build up the decoder. The arrow depicts the direction of information transmission from input, all the way up to output. The three skip connection lines from input, first and second output are >connected to layer with the output from the adjacent layer at decoder side.
 ### 2. Hyperparameters
 '''
 learning_rate = 0.001
