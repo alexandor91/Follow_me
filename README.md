@@ -4,7 +4,12 @@ This repository is established for the Udacity project 4 in nanodegree program
 ## Project: Follow_me
 
 ---
-
+Some basic Git commands are:
+```
+git status
+git add
+git commit
+```
 
 ###Steps to complete the project
 
