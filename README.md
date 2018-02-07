@@ -4,11 +4,7 @@ This repository is established for the Udacity project 4 in nanodegree program
 ## Project: Follow_me
 
 ---
-Some basic Git commands are:
-```
-git status
-git add
-git commit
+
 ```
 
 ###Steps to complete the project
@@ -31,6 +27,7 @@ The overall architecture for the network is composed of encoder and 1x1 convolut
 <br />&emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp; &emsp; &emsp;  &emsp;  &emsp;&emsp; &emsp;  &emsp;  &emsp;Network structure<br />
 The sketch above depicts the model utilized for this project, the layer with index from 1 to 3 belongs to encoder, 4 is the 1x1 convolution layer, from 5 to 7, these layers build up the decoder. The arrow depicts the direction of information transmission from input, all the way up to output. The three skip connection lines from input, first and second output are >connected to layer with the output from the adjacent layer at decoder side.
 ### 2. Hyperparameters
+Hyperparameters:
 '''
 learning_rate = 0.001
 batch_size = 50
@@ -47,7 +44,7 @@ Full configuration details for hyperparameters are listed as above.
 4 <b>validation_steps</b>: number of batches of validation images that go through the network in each epoch. similar to steps_per_epoch, a default value is kept. <br />
 5 <b>workers</b>: maximum number of processes to spin up. With my hardware specs, I found this number will not run out of my computational resources on my pc, and it speeds up my training process simultaneously. <br />
 ### 3. Fully connected network with 1*1 convolution 
-1x1 convolution is used to keep the 4D tensor with the spatial information instead of flattening the output into 2D tensor in the fully connected output.
+1x1 convolution is used to keep the 4D tensor with the spatial information instead of flattening the output into 2D tensor in the fully connected output:
 '''
     intermediate_layer = conv2d_batchnorm(encoder_layer3, filters = 256, kernel_size=1, strides=1)
 '''
@@ -55,14 +52,14 @@ This code snippet depicts the 1x1 convolution, number of kernels is same as the 
 Another merit for 1x1 convolution is the reduction of the tuning parameters relatively, compared to the fully connected output layer, preventing the model from overfitting. And it makes the structure deeper with some more parameters, which is implemented in matrix multiplication instead of costly convolution. 
 
 ### 4. Encoding and decoding methods
-The encoder is responsible for the feature extraction, the deeper each layer is, the more parameters for training is produced, for this project the layer is set to 3, and the depths in each layer increases with the forward direction, the depth is from 16 at first layer to 64 at last layer. The stride for the convolution is set to 2 for each layer, which produces the half of the dimensions both in height and the width of image after filter. After each layer in encoder the separable layer Implementation for both are provided to convolute the each image into different depth channel separately, instead of with 3 Dimensions' kernel for convolution, this will reduce the parameters for training, after that, the batch normalization with the ReLU activation function is applied to each layer to normalize the output and make the output positive.
+The encoder is responsible for the feature extraction, the deeper each layer is, the more parameters for training is produced, for this project the layer is set to 3, and the depths in each layer increases with the forward direction, the depth is from 16 at first layer to 64 at last layer. The stride for the convolution is set to 2 for each layer, which produces the half of the dimensions both in height and the width of image after filter. After each layer in encoder the separable layer Implementation for both are provided to convolute the each image into different depth channel separately, instead of with 3 Dimensions' kernel for convolution, this will reduce the parameters for training, after that, the batch normalization with the ReLU activation function is applied to each layer to normalize the output and make the output positive:
 '''
     encoder_layer1 = encoder_block(inputs, 32, 2)   
     encoder_layer2 = encoder_block(encoder_layer1, 64, 2)
     encoder_layer3 = encoder_block(encoder_layer2, 128, 2)
 '''
  The code snippet above is the encoder part, connected adjacently and the second parameter is for the depth, the third for stride.
-Decoder number is same as the number at encoder, but the size decreases from layer to layer, this transposed convolution will make the output exactly same size of input and additionally with the spatial information, the transposed convolution is used to swap the result from encoder to generate the image with spatial property. In each layer of decoder, the output is also via skipping connection technique to combine the layers with different resolutions.
+Decoder number is same as the number at encoder, but the size decreases from layer to layer, this transposed convolution will make the output exactly same size of input and additionally with the spatial information, the transposed convolution is used to swap the result from encoder to generate the image with spatial property. In each layer of decoder, the output is also via skipping connection technique to combine the layers with different resolutions:
 '''
     decoder_layer1 = decoder_block(intermediate_layer,encoder_layer2, 128)
     decoder_layer2 = decoder_block(decoder_layer1, encoder_layer1, 64)
